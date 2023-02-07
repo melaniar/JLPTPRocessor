@@ -1,0 +1,31 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+   <h3>JLPT Report</h3>
+   <form asp-page-handler="ProcessReport" method="post">
+   <div class="row">
+       Report Type: 
+   <select class="col-md-2  form-control" name="ReportType">
+       <option value="Master">Master</option>
+        <option value="Survey">Survey Report</option>
+   </select>
+   </div>
+     <div class="row">
+       Year Type: 
+   <select class="col-md-2  form-control" name="YearType">
+       <option value="23A">23A</option>
+        <option value="23B">23B</option>
+   </select>
+   </div>
+   <div class="row">
+      Test Site Code (UofA): 
+        <input id="testSite" class="form-control" value="4010301" name="TestSiteCode"/>
+   </div>
+   <br/>
+   <button type="submit" class="btn btn-primary" >Process</button>
+   </form>
+</div>
