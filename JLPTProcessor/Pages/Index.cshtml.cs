@@ -131,7 +131,8 @@ namespace JLPTProcessor.Pages
             DataRowCollection rows = dataSet.Tables["Questions"].Rows;
 
             string result = "";
-            result = "\"" + testLevel + "\",\"" + YearType + "\",\"" + TestSiteCode + "\",\"" + testLevel + "\",\"" + sqNum + "\",";
+            string seqFormat = "0000"; //seguence number to be padd with leading 0 with 4 digits length
+            result = "\"" + testLevel + "\",\"" + YearType + "\",\"" + TestSiteCode + "\",\"" + testLevel + "\",\"" + sqNum.ToString(seqFormat) + "\",";
 
             for (int i = 5; i < rows.Count; i++)//foreach (DataRow row in rows)
             {
@@ -497,8 +498,8 @@ namespace JLPTProcessor.Pages
                 }
 
             }
-            result +="\"" + learningPlace + "\",\"" + reason + "\",\"" + occupation + "\",\"" + occupationDet + "\"," + media + "," + withTeacher + "," + withFriends + ",";
-            result += withFam + "," + withSupervisor + "," + withColl + "," + withCustomer + ",";
+            result +="\"" + learningPlace + "\",\"" + reason + "\",\"" + occupation + "\",\"" + occupationDet + "\",\"" + media + "\",\"" + withTeacher + "\",\"" + withFriends + "\",\"";
+            result += withFam + "\",\"" + withSupervisor + "\",\"" + withColl + "\",\"" + withCustomer + "\",";
             for (int k = 0; k < timeTakingTest.Length; k++)
                 result += "\"" + timeTakingTest[k] + "\",";
 
@@ -660,7 +661,7 @@ namespace JLPTProcessor.Pages
             string[] temp = selected.Split(',');
             string[] codes = new string[arrLength];
             //padd the ansswers
-            for (int i = 1; i < arrLength; i++)
+            for (int i = 0; i < arrLength; i++)
             {
                 //initialize with empty
                 codes[i] = " ";
